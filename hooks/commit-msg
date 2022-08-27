@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# use git-conventional-commits, see https://github.com/qoomon/git-conventional-commits
+git-conventional-commits commit-msg-hook "$1"

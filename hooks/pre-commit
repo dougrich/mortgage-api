@@ -1,0 +1,12 @@
+#!/bin/bash
+
+HASCHANGES=$(git ls-files -m -o --exclude-standard)
+if [ ! -z "$HASCHANGES" ]
+then
+    echo -e "\033[1mNo untracked files or unstaged changes before commit\033[0m"
+    echo $HASCHANGES
+    echo ""
+    exitcode=-1
+fi
+
+exit $exitcode
