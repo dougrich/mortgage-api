@@ -14,7 +14,7 @@
       "merge",
       "revert"
     ],
-    "commitScopes": ["api"],
+    "commitScopes": ["api","ux"],
     "releaseTagGlobPattern": "v[0-9].*",
     "issueRegexPattern": "(^|\\s)#\\d+(\\s|$)"
   },
