@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "propertyPrice": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "downPayment": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "annualInterestRate": {
+            "type": "number",
+            "minimum": 0.001,
+            "maximum": 0.5
+        },
+        "amoritizationPeriod": {
+            "type": "integer",
+            "multipleOf": 5,
+            "minimum": 5,
+            "maximum": 30
+        },
+        "paymentSchedule": {
+            "type": "string",
+            "enum": ["accelerated-biweekly","biweekly","monthly"]
+        }
+    }
+}

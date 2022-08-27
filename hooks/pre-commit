@@ -1,4 +1,19 @@
 #!/bin/bash
+npm run lint --workspaces
+if [ $? -ne 0 ]
+then
+    echo -e "\033[1mCode must be properly formatted before being committed\033[0m"
+    echo ""
+    exitcode=-1
+fi
+
+npm run test --workspaces
+if [ $? -ne 0 ]
+then
+    echo -e "\033[1mTests must pass before being committed\033[0m"
+    echo ""
+    exitcode=-1
+fi
 
 HASCHANGES=$(git ls-files -m -o --exclude-standard)
 if [ ! -z "$HASCHANGES" ]
