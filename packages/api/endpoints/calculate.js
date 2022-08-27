@@ -63,7 +63,9 @@ function createCalculateEndpoint () {
     (req, res) => {
       const paramPMT = getMortgagePaymentParameters(req.body)
       const payment = calcPMT(paramPMT)
-      res.status(200).json({ payment })
+      res.statusCode = 200
+      res.setHeader('Content-Type', 'application/json')
+      res.end(JSON.stringify({ payment }))
     }
   )
 }

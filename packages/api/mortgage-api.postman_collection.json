@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "2939b9fa-fcdc-45d0-a16c-7018aff338be",
+		"name": "mortgage-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3294885"
+	},
+	"item": [
+		{
+			"name": "accelerated-biweekly",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Payment is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payment).to.eql(1188.7907886926014);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"propertyPrice\": 500000,\n    \"downPayment\": 100000,\n    \"annualInterestRate\": 0.06,\n    \"amoritizationPeriod\": 25,\n    \"paymentSchedule\": \"accelerated-biweekly\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{mortgage-api-host}}:{{port}}/",
+					"host": [
+						"{{mortgage-api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "biweekly",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Payment is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payment).to.eql(1168.5698052370433);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"propertyPrice\": 500000,\n    \"downPayment\": 100000,\n    \"annualInterestRate\": 0.05,\n    \"amoritizationPeriod\": 25,\n    \"paymentSchedule\": \"biweekly\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{mortgage-api-host}}:{{port}}/",
+					"host": [
+						"{{mortgage-api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "port",
+			"value": "3000"
+		},
+		{
+			"key": "mortgage-api-host",
+			"value": "localhost"
+		}
+	]
+}

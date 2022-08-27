@@ -25,8 +25,9 @@ test.each([
     _body: true // indicates to bodyparser that we already have a body
   }
   const response = {
-    status: jest.fn(() => response),
-    json: jest.fn(() => response)
+    statusCode: 0,
+    setHeader: jest.fn(),
+    end: jest.fn()
   }
   const next = jest.fn()
 
@@ -34,8 +35,9 @@ test.each([
   endpoint(request, response, next)
 
   // assert
-  expect(response.status).toHaveBeenCalledWith(expectedStatus)
-  expect(response.json).toHaveBeenCalledWith(expectedResponse)
+  expect(response.statusCode).toEqual(expectedStatus)
+  expect(response.setHeader).toHaveBeenCalledWith('Content-Type', 'application/json')
+  expect(response.end).toHaveBeenCalledWith(JSON.stringify(expectedResponse))
 })
 
 // note: the numbers for testing come from the PMT function google calendar

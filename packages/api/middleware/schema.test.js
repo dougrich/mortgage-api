@@ -24,8 +24,8 @@ test.each([
     null,
     testSchemaNumberValue,
     (_, res, next) => {
-      expect(res.status).toHaveBeenCalledWith(400)
-      expect(res.json).toHaveBeenCalledWith({ subcode: 1, reason: 'missing request body' })
+      expect(res.statusCode).toEqual(400)
+      expect(res.end).toHaveBeenCalledWith(JSON.stringify({ subcode: 1, reason: 'missing request body' }))
       expect(next).not.toHaveBeenCalled()
     }
   ],
@@ -33,8 +33,8 @@ test.each([
     { value: 0 },
     testSchemaNumberValue,
     (_, res, next) => {
-      expect(res.status).toHaveBeenCalledWith(400)
-      expect(res.json).toHaveBeenCalledWith({ subcode: 2, reason: 'invalid request body' })
+      expect(res.statusCode).toEqual(400)
+      expect(res.end).toHaveBeenCalledWith(JSON.stringify({ subcode: 2, reason: 'invalid request body' }))
       expect(next).not.toHaveBeenCalled()
     }
   ]
@@ -45,8 +45,9 @@ test.each([
     body: paramRequest
   }
   const res = {
-    status: jest.fn(() => res),
-    json: jest.fn(() => res)
+    statusCode: 0,
+    setHeader: jest.fn(),
+    end: jest.fn()
   }
   const next = jest.fn()
 
