@@ -1,28 +1,41 @@
 {
     "type": "object",
+    "version": 1,
     "properties": {
+        "version": {
+            "type": "integer"
+        },
         "propertyPrice": {
+            "title": "Property Price",
             "type": "integer",
-            "minimum": 1
+            "minimum": 1,
+            "$comment": "Property price should be at least $1"
         },
         "downPayment": {
+            "title": "Down Payment",
             "type": "integer",
-            "minimum": 1
+            "minimum": 0,
+            "$comment": "Down payment should be between 5% and 100% of the property price"
         },
         "annualInterestRate": {
+            "title": "Annual Interest Rate",
             "type": "number",
             "minimum": 0.001,
-            "maximum": 0.5
+            "maximum": 0.5,
+            "$comment": "Annualized interest rate should be between 1% and 50%, up to 3 decimals"
         },
         "amoritizationPeriod": {
+            "title": "Amoritization Period",
             "type": "integer",
             "multipleOf": 5,
             "minimum": 5,
             "maximum": 30
         },
         "paymentSchedule": {
+            "title": "Payment Schedule",
             "type": "string",
             "enum": ["accelerated-biweekly","biweekly","monthly"]
         }
-    }
+    },
+    "required": ["version", "propertyPrice", "downPayment", "annualInterestRate", "amoritizationPeriod", "paymentSchedule"]
 }

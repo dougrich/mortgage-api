@@ -1,7 +1,14 @@
 const Ajv = require('ajv')
 
-function schema (schema) {
+/**
+ * Schema middleware; creates middleware that checks the body against a JSON schema
+ * @param {object} schema
+ * @param {?function} additionalVerification optional extra validation logic
+ * @returns {Middleware}
+ */
+function schema (schema, additionalVerification) {
   const ajv = new Ajv()
+  ajv.addKeyword('version')
   const validate = ajv.compile(schema)
   return (req, res, next) => {
     if (!req.body) {
@@ -23,6 +30,16 @@ function schema (schema) {
       res.setHeader('Content-Type', 'application/json')
       res.end(JSON.stringify({
         subcode: 2,
+        reason: 'invalid shape of request body'
+      }))
+      return
+    }
+
+    if (additionalVerification && !additionalVerification(req.body)) {
+      res.statusCode = 400
+      res.setHeader('Content-Type', 'application/json')
+      res.end(JSON.stringify({
+        subcode: 3,
         reason: 'invalid request body'
       }))
       return

@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "webpack-dev-server",
     "lint": "standard",
-    "test": "echo \"Error: test placeholder\""
+    "test": "echo \"UX tests use headless chrome - see README.md\""
   },
   "author": "",
   "license": "MIT",

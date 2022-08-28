@@ -38,7 +38,7 @@ function getMortgagePaymentParameters ({
 /**
  * Calculates loan payment for a given rate - equivalent to PMT in google sheets / excel
  * @param {object} parameters the named parameters for a loan payment rate
- * @returns the expected payment per period
+ * @returns {number} the expected payment per period
  */
 function calcPMT ({
   principle: P,
@@ -59,7 +59,13 @@ function createCalculateEndpoint () {
   return combine(
     allow('POST'),
     bodyparser.json(),
-    schema(calculateSchema),
+    schema(calculateSchema, params => {
+      return (
+        params.downPayment < params.propertyPrice &&
+        params.downPayment >= params.propertyPrice * 0.2 &&
+        params.version === calculateSchema.version
+      )
+    }),
     (req, res) => {
       const paramPMT = getMortgagePaymentParameters(req.body)
       const payment = calcPMT(paramPMT)

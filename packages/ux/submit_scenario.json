@@ -1,0 +1,189 @@
+{
+  "title": "mortgage calculator",
+  "selectorAttribute": "id",
+  "steps": [
+    {
+      "type": "setViewport",
+      "width": 809,
+      "height": 834,
+      "deviceScaleFactor": 1,
+      "isMobile": false,
+      "hasTouch": false,
+      "isLandscape": false
+    },
+    {
+      "type": "navigate",
+      "url": "http://localhost:3030/?",
+      "assertedEvents": [
+        {
+          "type": "navigation",
+          "url": "http://localhost:3030/?",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "[id=mortgage-payment__propertyPrice]"
+        ]
+      ],
+      "offsetY": 9.109375,
+      "offsetX": 319.5
+    },
+    {
+      "type": "change",
+      "value": "400000",
+      "selectors": [
+        [
+          "[id=mortgage-payment__propertyPrice]"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "[id=mortgage-payment__downPayment]"
+        ]
+      ],
+      "offsetY": 28.25,
+      "offsetX": 171.5
+    },
+    {
+      "type": "change",
+      "value": "100000",
+      "selectors": [
+        [
+          "[id=mortgage-payment__downPayment]"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "[id=mortgage-payment__interestRate]"
+        ]
+      ],
+      "offsetY": 33.390625,
+      "offsetX": 124.5
+    },
+    {
+      "type": "change",
+      "value": "5.025",
+      "selectors": [
+        [
+          "[id=mortgage-payment__interestRate]"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "change",
+      "value": "5.029",
+      "selectors": [
+        [
+          "[id=mortgage-payment__interestRate]"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "change",
+      "value": "5.03",
+      "selectors": [
+        [
+          "[id=mortgage-payment__interestRate]"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "[id=mortgage-payment__amoritizationPeriod]"
+        ]
+      ],
+      "offsetY": 13.53125,
+      "offsetX": 90.5
+    },
+    {
+      "type": "change",
+      "value": "20",
+      "selectors": [
+        [
+          "[id=mortgage-payment__amoritizationPeriod]"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "[id=mortgage-payment__paymentSchedule]"
+        ]
+      ],
+      "offsetY": 30.171875,
+      "offsetX": 105.5
+    },
+    {
+      "type": "change",
+      "value": "monthly",
+      "selectors": [
+        [
+          "[id=mortgage-payment__paymentSchedule]"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "[id=mortgage-payment__submit]"
+        ],
+        [
+          "aria/Submit"
+        ]
+      ],
+      "offsetY": 16.046875,
+      "offsetX": 21.8828125
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "[id=status-message]"
+        ]
+      ],
+      "offsetY": 8.15625,
+      "offsetX": 166.5,
+      "duration": 892.6000003814697
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "[id=status-message]"
+        ]
+      ],
+      "offsetY": 8.15625,
+      "offsetX": 166.5,
+      "button": "secondary"
+    }
+  ]
+}

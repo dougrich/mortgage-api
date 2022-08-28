@@ -1,1 +1,56 @@
+<style>
+    body {
+        font-size: 16pt;
+    }
+    form {
+        padding: 2em 0em;
+        margin: auto;
+        margin-top: 2em;
+        width: 95%;
+        max-width: 500px;
+    }
+    .form-field, .form-submit {
+        margin-top: 1em;
+    }
+    .form-submit {
+        text-align: right;
+    }
+
+    button {
+        font-size: 0.8em;
+        padding: 0.5em 2em;
+    }
+
+    label, select, input {
+        display: block;
+        width: 100%;
+        font-size: 1em;
+        padding: 0.3em 0.2em;
+        box-sizing: border-box;
+    }
+
+    select, input {
+        border: 1px solid black;
+        border-radius: 2px;
+    }
+
+    .form-field__requirements {
+        font-size: 0.6em;
+        height: 0;
+        color: red;
+        display: block;
+    }
+
+    input:invalid {
+        border-color: red;
+    }
+
+    input:valid+.form-field__requirements {
+        display: none;
+    }
+
+    label {
+        font-size: 0.8em;
+    }
+</style>
 <div id="app"></div>

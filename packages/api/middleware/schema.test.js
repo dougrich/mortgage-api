@@ -34,7 +34,7 @@ test.each([
     testSchemaNumberValue,
     (_, res, next) => {
       expect(res.statusCode).toEqual(400)
-      expect(res.end).toHaveBeenCalledWith(JSON.stringify({ subcode: 2, reason: 'invalid request body' }))
+      expect(res.end).toHaveBeenCalledWith(JSON.stringify({ subcode: 2, reason: 'invalid shape of request body' }))
       expect(next).not.toHaveBeenCalled()
     }
   ]

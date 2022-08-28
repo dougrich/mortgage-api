@@ -12,7 +12,10 @@ module.exports = {
     new HtmlWebpackPlugin({ template: 'src/index.html' })
   ],
   devServer: {
-    port: 3030
+    port: 3030,
+    proxy: {
+      '/rates': 'http://localhost:3000'
+    }
   },
   module: {
     rules: [
@@ -24,5 +27,8 @@ module.exports = {
         }
       }
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.json']
   }
 }

@@ -5,6 +5,7 @@ test.each([
   [
     'POST',
     {
+      version: 1,
       propertyPrice: 500000,
       downPayment: 100000,
       annualInterestRate: 0.05,
