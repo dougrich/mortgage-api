@@ -30,7 +30,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"propertyPrice\": 500000,\n    \"downPayment\": 100000,\n    \"annualInterestRate\": 0.06,\n    \"amoritizationPeriod\": 25,\n    \"paymentSchedule\": \"accelerated-biweekly\"\n}",
+					"raw": "{\n    \"version\": 1,\n    \"propertyPrice\": 500000,\n    \"downPayment\": 100000,\n    \"annualInterestRate\": 0.06,\n    \"amoritizationPeriod\": 25,\n    \"paymentSchedule\": \"accelerated-biweekly\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,7 +74,51 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"propertyPrice\": 500000,\n    \"downPayment\": 100000,\n    \"annualInterestRate\": 0.05,\n    \"amoritizationPeriod\": 25,\n    \"paymentSchedule\": \"biweekly\"\n}",
+					"raw": "{\n    \"version\": 1,\n    \"propertyPrice\": 500000,\n    \"downPayment\": 100000,\n    \"annualInterestRate\": 0.05,\n    \"amoritizationPeriod\": 25,\n    \"paymentSchedule\": \"biweekly\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{mortgage-api-host}}:{{port}}/",
+					"host": [
+						"{{mortgage-api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "failure - down payment too small",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Subcode is for additional validation rules\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.subcode).to.eql(3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"version\": 1,\n    \"propertyPrice\": 500000,\n    \"downPayment\": 500001,\n    \"annualInterestRate\": 0.05,\n    \"amoritizationPeriod\": 25,\n    \"paymentSchedule\": \"biweekly\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
